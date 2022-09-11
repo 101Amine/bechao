@@ -7,7 +7,7 @@ export const Form = () => {
 
   useEffect(() => {
     console.log(postData)
-  },postData)
+  },[postData])
 
 
   return (

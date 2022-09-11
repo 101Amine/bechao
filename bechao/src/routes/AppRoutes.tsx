@@ -12,7 +12,7 @@ const AppRoutes : React.FC<any> = ( props) => {
 			exact={props.exact}
 			path={props.path}
 			history={history}
-			render={propss =>
+			render={(propss: JSX.IntrinsicAttributes) =>
 				<props.component {...propss} />
 
 			}
