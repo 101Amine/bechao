@@ -1,28 +1,29 @@
-import axios from "axios";
+import http from "../http-common";
 import { PostMessage } from "../shared/types";
+import { ROOT_URL } from "../utils/Constants";
 
 
 
 const getAll = () => {
-  return axios.get("/posts");
+  return fetch(`${ROOT_URL}/postsssss`);
 };
 const get = (id:number) => {
-  return axios.get(`/post/${id}`);
+  return http.get(`${ROOT_URL}/post/${id}`);
 };
 const create = (data:PostMessage) => {
-  return axios.post("/post", data);
+  return http.post(`${ROOT_URL}/post`, data);
 };
 const update = (id:number, data:PostMessage) => {
-  return axios.put(`/post/${id}`, data);
+  return http.put(`${ROOT_URL}/post/${id}`, data);
 };
 const remove = (id:number) => {
-  return axios.delete(`/post/${id}`);
+  return http.delete(`${ROOT_URL}/post/${id}`);
 };
 const removeAll = () => {
-  return axios.delete(`/posts`);
+  return http.delete(`${ROOT_URL}/test`);
 };
 const findById = (id:number) => {
-  return axios.get(`/post/${id}`);
+  return http.get(`${ROOT_URL}/post/${id}`);
 };
 const postApi = {
   getAll,

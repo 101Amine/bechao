@@ -1,4 +1,4 @@
-export const ROOT_URL = 'http://localhost:5004/';
+export const ROOT_URL = 'http://localhost:5004';
 
 
 

@@ -2,6 +2,7 @@
   "name": "bechao",
   "private": true,
   "version": "0.0.0",
+  "proxy": "http://localhost:5004",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +21,7 @@
     "jwt-decode": "^3.1.2",
     "material-ui-chip-input": "^1.1.0",
     "moment": "^2.27.0",
+    "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-file-base64": "^1.0.3",

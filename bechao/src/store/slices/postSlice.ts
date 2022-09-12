@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 import { PostMessage } from '../../shared/types'
 import postApi from '../../services/postApi'
+import axios from 'axios'
 
 // Define a type for the slice state
 interface Post {
@@ -30,15 +31,14 @@ const initialState: Post = {
 }
 
 
- // First, create the thunk
-const fetchPosts = createAsyncThunk(
+// fetch all posts from api /fetchPosts
+export const fetchPosts = createAsyncThunk(
     'Posts/fetchPosts',
-    async (userId: number, thunkAPI) => {
-      const response = await postApi.getAll()
+    async () => {
+      const response = await axios.get('http://localhost:5004/posts')
       return response.data
     }
   )
-
 
 export const postSlice = createSlice({
   name: 'postMessage',
@@ -52,10 +52,18 @@ export const postSlice = createSlice({
       state.loading = 'succeeded';
     },
   },
-  extraReducers(builder) {
-        builder.addCase(fetchPosts.fulfilled, (state, action) => {
+  extraReducers: (builder) => {
+        builder
+        .addCase(fetchPosts.fulfilled, (state, action) => {
             state.Post= action.payload;
+        })
+        .addCase(fetchPosts.pending, (state, action) => {
+          state.loading= 'pending'
       })
+        .addCase(fetchPosts.rejected, (state, action) => {
+          state.err= 'rejected';
+          console.log('rejected')
+})
   },
 })
 
